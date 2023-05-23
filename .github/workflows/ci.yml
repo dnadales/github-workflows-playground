@@ -16,11 +16,12 @@ jobs:
           mkdir my-data/nested/
           mv *.txt my-data/nested/
           touch my-data/nested/foo
+          tar vzcf my-data.tgz my-data
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: my-data-artifact
-          path: my-data/*
+          path: my-data.tgz
 
   display:
     name: Display
@@ -34,4 +35,5 @@ jobs:
       - name: Display the results
         run: |
           ls *
+          tar vzxf my-data.tgz
           cat my-data/nested/*.txt
