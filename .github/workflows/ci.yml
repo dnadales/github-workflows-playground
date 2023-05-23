@@ -20,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: my-data-artifact
-          path: my-data/
+          path: my-data/*
 
   display:
     name: Display
