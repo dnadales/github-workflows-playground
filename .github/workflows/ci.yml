@@ -56,6 +56,6 @@ jobs:
       - name: Display the results
         run: |
           pwd
-          ls *
+          ls -la
           ls my-data
           cat my-data/nested/*.txt
