@@ -13,9 +13,8 @@ jobs:
           echo "Moar! artifacts" > moar.txt
           echo "Lotta artifacts" > lotta.txt
           mkdir my-data
-          mv *.txt my-data
-          mkdir my-data/gab
-          mv my-data/lotta.txt my-data/gab
+          mkdir my-data/nested/
+          mv *.txt my-data/nested/
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
