@@ -48,11 +48,11 @@ jobs:
     needs: compute
     runs-on: ubuntu-latest
     steps:
-      - name: Cache artifacts
-        uses: actions/cache@v3
-        with:
-          path: my-data/
-          key: my-data
+      # - name: Cache artifacts
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: my-data/
+      #     key: my-data
       - name: Display the results
         run: |
           ls *
