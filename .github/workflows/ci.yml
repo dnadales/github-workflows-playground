@@ -1,0 +1,34 @@
+name: Share data between jobs
+
+on: [push]
+
+jobs:
+  compute:
+    name: Compute
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compute
+        run: |
+          echo "Hello artifacts" > hello.txt
+          echo "Moar! artifacts" > moar.txt
+          mkdir my-data
+          mv *.txt my-data
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-data-artifact
+          path: my-data
+
+  display:
+    name: Display
+    needs: compute
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download my data
+        uses: actions/download-artifact@v3
+        with:
+          name: my-data-artifact
+      - name: Display the results
+        run: |
+          ls *
+          cat my-data/*.txt
