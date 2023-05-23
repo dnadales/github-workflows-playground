@@ -22,6 +22,11 @@ jobs:
         with:
           name: my-data-artifact
           path: my-data.tgz
+      - name: Cache artifacts
+        uses: actions/cache@v3
+        with:
+          path: my-data/
+          key: my-data
 
   display:
     name: Display
@@ -36,4 +41,19 @@ jobs:
         run: |
           ls *
           tar vzxf my-data.tgz
+          cat my-data/nested/*.txt
+
+  display-2:
+    name: Display but using cache
+    needs: compute
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache artifacts
+        uses: actions/cache@v3
+        with:
+          path: my-data/
+          key: my-data
+      - name: Display the results
+        run: |
+          ls *
           cat my-data/nested/*.txt
