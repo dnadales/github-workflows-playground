@@ -70,4 +70,4 @@ jobs:
         run: echo "This is always run"
       - name: Run this only on pushes to main
         if: ${{ matrix.os }} == 'toto'
-        run: echo "This runs only on pushes to main"
+        run: echo "This runs only on pushes to main ${{ matrix.os }}"
