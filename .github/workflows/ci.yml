@@ -69,5 +69,5 @@ jobs:
       - name: Run this always
         run: echo "This is always run"
       - name: Run this only on pushes to main
-        if: 'foo' == 'bar'
+        if: foo == 'bar'
         run: echo "This runs only on pushes to main ${{ matrix.os }}"
