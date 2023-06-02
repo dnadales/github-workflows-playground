@@ -70,5 +70,5 @@ jobs:
         run: echo "This is always run"
       - name: Run this only on pushes to main
         if: |
-          "foo" == "bar"
+          matrix.os == 'ubuntu-latest'
         run: echo "This runs only on pushes to main ${{ matrix.os }}"
